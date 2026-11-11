@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketPlace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- top bar -->
+  <div class="topbar">
+    <div class="logo-area">
+      <img src="logo.svg" alt="MarketPlace logo" width="46" height="46">
+      <div>
+        <h1>MarketPlace</h1>
+        <p>Every Product Deserves a Platform.</p>
+      </div>
+    </div>
+
+    <div class="menu">
+      <button onclick="showPage('home')">Home</button>
+      <button id="btnLogin" onclick="showPage('login')">Vendor Login</button>
+      <button id="btnAdd" onclick="showPage('add')" style="display:none;">Add Product</button>
+      <button id="btnLogout" onclick="logout()" style="display:none;">Logout</button>
+      <button class="cart-btn" onclick="showPage('cart')">Cart (<span id="cartCount">0</span>)</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page">
+      <div class="banner">
+        <h2>Buy from local vendors near you</h2>
+        <p>Small shops and local sellers can list their products here. Customers can browse and add items to the cart.</p>
+      </div>
+
+      <div class="search-row">
+        <input type="text" id="searchBox" placeholder="Search product or shop name" onkeyup="showProducts()">
+        <select id="categoryBox" onchange="showProducts()">
+          <option value="All">All Categories</option>
+          <option>Groceries</option>
+          <option>Clothes</option>
+          <option>Handicrafts</option>
+          <option>Sweets</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <h3 id="countText"></h3>
+      <div id="productList" class="product-list"></div>
+    </div>
+
+    <!-- VENDOR LOGIN PAGE -->
+    <div id="login" class="page" style="display:none;">
+      <div class="form-box">
+        <h3>Vendor Login</h3>
+        <p class="small">Sign in to add your products</p>
+
+        <label>Shop Name</label>
+        <input type="text" id="shopName" placeholder="e.g. Sharma Sweets">
+
+        <label>Password</label>
+        <input type="password" id="shopPass" placeholder="Enter password">
+
+        <button class="main-btn" onclick="login()">Login</button>
+      </div>
+    </div>
+
+    <!-- ADD PRODUCT PAGE -->
+    <div id="add" class="page" style="display:none;">
+      <div class="form-box">
+        <p class="logged">Logged in as: <b id="vendorText"></b></p>
+        <h3>Register Product for Sale</h3>
+
+        <label>Product Name</label>
+        <input type="text" id="pName" placeholder="e.g. Clay Matka">
+
+        <label>Category</label>
+        <select id="pCategory">
+          <option>Groceries</option>
+          <option>Clothes</option>
+          <option>Handicrafts</option>
+          <option>Sweets</option>
+          <option>Other</option>
+        </select>
+
+        <label>Price (Rs.)</label>
+        <input type="number" id="pPrice" placeholder="150">
+
+        <label>Stock Quantity</label>
+        <input type="number" id="pStock" placeholder="20">
+
+        <button class="main-btn" onclick="addProduct()">Add Product</button>
+      </div>
+    </div>
+
+    <!-- CART PAGE -->
+    <div id="cart" class="page" style="display:none;">
+      <div class="form-box wide">
+        <h3>Your Cart</h3>
+        <table>
+          <thead>
+            <tr><th>Product</th><th>Price</th><th></th></tr>
+          </thead>
+          <tbody id="cartRows"></tbody>
+        </table>
+        <p id="cartEmpty" class="small"></p>
+        <p class="total">Total: Rs. <span id="cartTotal">0</span></p>
+        <button class="main-btn" onclick="placeOrder()">Place Order</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    MarketPlace - Local Market Online Store for Small Vendors | 1st Year Project
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
