@@ -5,11 +5,11 @@ var products = [
   { name: "Cotton Dupatta", category: "Clothes", shop: "Bunkar Weaves", price: 340, stock: 6 }
 ];
 
-var cart = [];            // items added to cart
-var currentVendor = "";   // name of logged in shop
+var cart = [];            
+var currentVendor = "";   
 
 
-// show one page and hide the others
+
 function showPage(pageName) {
   var pages = ["home", "login", "add", "cart"];
   for (var i = 0; i < pages.length; i++) {
@@ -23,7 +23,7 @@ function showPage(pageName) {
 }
 
 
-// show products on the home page (with search and category filter)
+
 function showProducts() {
   var text = document.getElementById("searchBox").value.toLowerCase();
   var cat = document.getElementById("categoryBox").value;
@@ -56,7 +56,7 @@ function showProducts() {
 }
 
 
-// vendor login
+
 function login() {
   var shop = document.getElementById("shopName").value.trim();
   var pass = document.getElementById("shopPass").value;
@@ -92,7 +92,6 @@ function logout() {
 }
 
 
-// vendor adds a new product
 function addProduct() {
   var name = document.getElementById("pName").value.trim();
   var category = document.getElementById("pCategory").value;
@@ -115,7 +114,7 @@ function addProduct() {
     price: Number(price),
     stock: Number(stock)
   };
-  products.unshift(newProduct);   // put new product first
+  products.unshift(newProduct);   
 
   document.getElementById("pName").value = "";
   document.getElementById("pPrice").value = "";
@@ -127,7 +126,6 @@ function addProduct() {
 }
 
 
-// cart functions
 function addToCart(index) {
   cart.push(products[index]);
   document.getElementById("cartCount").innerHTML = cart.length;
